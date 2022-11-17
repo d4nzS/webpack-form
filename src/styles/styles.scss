@@ -1,0 +1,86 @@
+@use 'vars' as v;
+@use 'mixins' as m;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding-top: 20px;
+  background-color: black;
+}
+
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__form {
+    padding: 0 40px;
+  }
+}
+
+.form {
+  display: flex;
+  @include m.skew(-45deg);
+
+  &__input-wrapper {
+    border: v.$border;
+    border-right: none;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+  &__input {
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    border: none;
+    outline: none;
+    @include m.skew(45deg);
+  }
+
+  &__button {
+    border: v.$border;
+    color: white;
+    padding: 15px 50px;
+    background-color: red;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &__span {
+    display: block;
+    letter-spacing: 0.1em;
+    @include m.skew(45deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .main {
+    &__form {
+      padding: 0 20px;
+    }
+  }
+
+  .form {
+    transform: none;
+
+    &__input-wrapper {
+      border-right: v.$border;
+    }
+
+    &__input {
+      transform: none;
+    }
+
+    &__button {
+      padding: 15px 20px;
+    }
+
+    &__span {
+      transform: none;
+    }
+  }
+}
